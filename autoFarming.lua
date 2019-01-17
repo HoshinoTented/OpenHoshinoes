@@ -77,10 +77,10 @@ function search(turn, from, to)
 
    for i = from, to, step do
       if (not (i == from or i == to)) then
-	 block()
+	 block(i)
       end
 
-      block()
+      block(i)
    end
 end
 
