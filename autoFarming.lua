@@ -14,6 +14,16 @@ robot = component.robot
 inventory = component.inventory_controller
 scanner = component.geolyzer
 
+-- 存放作物
+function store()
+   for i = 1, 16 do
+      robot.select(i)
+      inventory.dropIntoSlot(sides.front, i)
+   end
+
+   robot.select(1)
+end
+
 -- 判断下方作物是否成熟
 function canGrow()
    local info = scanner.analyze(sides.bottom)
@@ -99,7 +109,8 @@ while (true) do
    -- 此时应该背对农场, 接着转向箱子
    robot.turn(false)
    -- 放入农作物
-   inventory.dropIntoSlot(sides.front, 1)
+   -- inventory.dropIntoSlot(sides.front, 1)
+   store()
    robot.turn(false)
 end
 
